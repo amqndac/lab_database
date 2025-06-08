@@ -41,7 +41,8 @@ def get_random_riddles(num_riddles):
 
     random_riddles = conn.execute(
         """
-        SELECT * FROM riddles 
+        SELECT * FROM riddles
+         
         ORDER BY random()
         LIMIT ?""",
         (num_riddles,)
@@ -50,6 +51,58 @@ def get_random_riddles(num_riddles):
     conn.close()
 
     return random_riddles
+
+def get_random_riddles_easy(num_riddles):
+    conn = sqlite3.connect('database.db') # connect to database
+    conn.row_factory = sqlite3.Row  #converts row to dictionary object
+
+    random_riddles = conn.execute(
+        """
+        SELECT * FROM riddles 
+        WHERE difficulty = 'easy'
+        ORDER BY random()
+        LIMIT ?""",
+        (num_riddles,)
+    ).fetchall()
+
+    conn.close()
+
+    return random_riddles
+
+def get_random_riddles_med(num_riddles):
+    conn = sqlite3.connect('database.db') # connect to database
+    conn.row_factory = sqlite3.Row  #converts row to dictionary object
+
+    random_riddles = conn.execute(
+        """
+        SELECT * FROM riddles 
+        WHERE difficulty = 'medium'
+        ORDER BY random()
+        LIMIT ?""",
+        (num_riddles,)
+    ).fetchall()
+
+    conn.close()
+
+    return random_riddles
+
+def get_random_riddles_hard(num_riddles):
+    conn = sqlite3.connect('database.db') # connect to database
+    conn.row_factory = sqlite3.Row  #converts row to dictionary object
+
+    random_riddles = conn.execute(
+        """
+        SELECT * FROM riddles 
+        WHERE difficulty = 'hard'
+        ORDER BY random()
+        LIMIT ?""",
+        (num_riddles,)
+    ).fetchall()
+
+    conn.close()
+
+    return random_riddles
+
 
 
 

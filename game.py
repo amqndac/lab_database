@@ -17,7 +17,18 @@ f"Hello {name}, welcome to the Riddler! \n" +
  "Try your best to answer correctly!\n" +
  "--------------------------------------------------\n")
 
-riddles = get_random_riddles(5)
+level_selection = input("What level would you like to play? (Easy, Medium, Hard, Mixed Difficulty) \n")
+if level_selection == "Easy" or "easy":
+    riddles = get_random_riddles_easy(10)
+
+elif level_selection == "Medium" or "medium":
+    riddles = get_random_riddles_medium(10)
+
+elif level_selection == "hard" or "Hard":
+    riddles = get_random_riddles_hard(10)
+
+elif level_selection == "Mixed Difficulty" or "mixed difficulty" or "Mixed difficulty":
+    riddles = get_random_riddles(10)
 
 for riddle in riddles: 
    print(riddle['question'])
